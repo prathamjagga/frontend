@@ -10,9 +10,8 @@ function App() {
   return (
     <React.Fragment>
       <Header />
-
       <Routes>
-        <Route path="Home" Component={Search} />
+        <Route path="/" Component={Search} />
       </Routes>
     </React.Fragment>
   );
