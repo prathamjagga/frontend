@@ -64,10 +64,10 @@ const Search = () => {
           }}
         />
       </div>
-      {loading && <div class="loading fullwidth"></div>}
+      {loading && <div className="loading fullwidth"></div>}
       {results.length == 0 && loading == false && (
         <div
-          class="fullwidth"
+          className="fullwidth"
           style={{
             display: "flex",
             justifyContent: "center",
