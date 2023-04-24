@@ -28,7 +28,7 @@ const Search = () => {
       setLoading(true);
       setTimeout(async function () {
         const data = await axios.get(
-          `https://searchbackend.onrender.com/${searchQuery}`
+          `https://searchbackend.onrender.com/api/ads/search/${searchQuery}`
         );
         setResults(data.data.result);
         setLoading(false);
