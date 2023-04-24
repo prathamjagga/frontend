@@ -3,6 +3,7 @@ import axios from "axios";
 import "../Styles/Search.css";
 import CardGrid from "../Components/CardGrid";
 const Search = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [placeholder, setPlaceholder] = useState("");
@@ -19,20 +20,19 @@ const Search = () => {
       }
     }, 100);
   }, [index]);
-  const loadResults = async (searchQuery) => {
+  const loadResults = async () => {
     if (searchQuery == "") {
       setResults([]);
       return;
     }
     try {
+      const tempQuery = searchQuery;
       setLoading(true);
-      setTimeout(async function () {
-        const data = await axios.get(
-          `https://searchbackend.onrender.com/api/ads/search/${searchQuery}`
-        );
-        setResults(data.data.result);
-        setLoading(false);
-      }, 500);
+      const data = await axios.get(
+        `https://searchbackend.onrender.com/api/ads/search/${searchQuery}`
+      );
+      setLoading(false);
+      if (tempQuery == searchQuery) setResults(data.data.result);
     } catch (err) {
       console.log(err);
     }
@@ -60,7 +60,8 @@ const Search = () => {
           }}
           placeholder={placeholder + "🔎"}
           onChange={(e) => {
-            loadResults(e.target.value);
+            setSearchQuery(e.target.value);
+            loadResults();
           }}
         />
       </div>
