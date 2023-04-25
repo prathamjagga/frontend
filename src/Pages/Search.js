@@ -29,7 +29,7 @@ const Search = () => {
       const tempQuery = searchQuery;
       setLoading(true);
       const data = await axios.get(
-        `https://searchbackend.onrender.com/api/ads/search/${searchQuery}`
+        `http://localhost:5000/api/ads/search/${searchQuery}`
       );
       setLoading(false);
       if (tempQuery == searchQuery) setResults(data.data.result);
