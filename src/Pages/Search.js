@@ -52,12 +52,6 @@ const Search = () => {
       >
         <input
           autoFocus
-          style={{
-            outline: "none",
-            borderRadius: "5px",
-            width: "60%",
-            height: "20%",
-          }}
           placeholder={placeholder + "🔎"}
           onChange={(e) => {
             setSearchQuery(e.target.value);
